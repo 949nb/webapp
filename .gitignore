@@ -33,4 +33,34 @@ build/
 .vscode/
 
 ### WebContent ###
-/WebContent
+# Logs
+/WebContent/vuewebcontent/logs
+/WebContent/vuewebcontent/*.log
+/WebContent/vuewebcontent/npm-debug.log*
+/WebContent/vuewebcontent/yarn-debug.log*
+/WebContent/vuewebcontent/yarn-error.log*
+/WebContent/vuewebcontent/pnpm-debug.log*
+/WebContent/vuewebcontent/lerna-debug.log*
+
+/WebContent/vuewebcontent/node_modules
+/WebContent/vuewebcontent/.DS_Store
+/WebContent/vuewebcontent/dist
+/WebContent/vuewebcontent/dist-ssr
+/WebContent/vuewebcontent/coverage
+/WebContent/vuewebcontent/*.local
+
+/WebContent/vuewebcontent/cypress/videos/
+/WebContent/vuewebcontent/cypress/screenshots/
+
+# Editor directories and files
+/WebContent/vuewebcontent/.vscode/*
+/WebContent/vuewebcontent/!.vscode/extensions.json
+/WebContent/vuewebcontent/.idea
+/WebContent/vuewebcontent/*.suo
+/WebContent/vuewebcontent/*.ntvs*
+/WebContent/vuewebcontent/*.njsproj
+/WebContent/vuewebcontent/*.sln
+/WebContent/vuewebcontent/*.sw?
+
+/WebContent/vuewebcontent/*.tsbuildinfo
+
