@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class WebAppController {
 
     @GetMapping("/api")
-    public User APIController() {
-        return new User("小明", 18);
+    public String APIController() {
+        return "欢迎来到WebApp！";
     }
 
     @GetMapping("/api/some-endpoint")
