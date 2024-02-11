@@ -1,5 +1,5 @@
 <template>
-    <h2>ログイン</h2>
+    <h2>Register Form</h2>
     <div>
         {{ usernameAndPasswordMsg }}
         <div>
@@ -8,41 +8,51 @@
         </div>
         <div>
             <label for="password">パスワード：</label>
-            <input type="password" @keydown.enter="loginHandler" id="password" name="password" v-model="password">
+            <input type="password" id="password" name="password" v-model="password">
         </div>
         <div>
-            <button @click="loginHandler">ログイン</button>
+            <label for="email">メール：</label>
+            <input type="text" @keydown.enter="RegisterHandler" id="email" name="email" v-model="email">
         </div>
         <div>
-            <button @click="RegisterHandler">登録へ</button>
+            <button @click="RegisterHandler">登録する</button>
+        </div>
+        <div>
+            <button @click="LoginBack">戻る</button>
         </div>
     </div>
 </template>
 
 <script>
     export default {
-        name: "Login",
+        name: "Register",
         data() {
             return {
                 username: "",
                 password: "",
+                email: "",
                 usernameAndPasswordMsg: ""
             }
         },
         created() {},
         computed: {
-            usernameAndPasswordIsBland() {
-                return this.username && this.password;
+            usernameAndPasswordAndEmailIsBland() {
+                return this.username && this.password && this.email;
             }
         },
         methods: {
-            loginHandler() {
-                if (this.usernameAndPasswordIsBland) {
-                    fetch('http://localhost:8080/login', {
+            LoginBack() {
+                this.$router.push("/login")
+            },
+            RegisterHandler() {
+                console.log(123)
+                if (this.usernameAndPasswordAndEmailIsBland) {
+                    fetch('http://localhost:8080/register', {
                         method: 'POST',
                         body: JSON.stringify({
                             username: this.username,
-                            password: this.password
+                            password: this.password,
+                            email: this.email
                         }),
                         headers: {
                             "Content-Type": "application/json",
@@ -58,7 +68,7 @@
                     .then((res) => {
                         window.alert(res[0])
                         if (res[1] === "0") {
-                            console.log("/login to /")
+                            console.log("/register to /")
                             this.$router.push({ path:'/'})
                         }
                     })
@@ -66,11 +76,8 @@
                         window.alert(err.message)
                     })
                 } else {
-                    window.alert("username or password is not bland")
+                    window.alert("username or password or email is not bland")
                 }
-            },
-            RegisterHandler() {
-                this.$router.push("/register")
             }
         }
     }

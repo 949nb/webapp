@@ -14,22 +14,22 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/login")
-    public String login(@RequestBody User loginUser) {
+    public String[] login(@RequestBody User loginUser) {
         boolean isValid = userService.checkLogin(loginUser.getUsername(), loginUser.getPassword());
         if (isValid) {
-            return "Login successful";
+            return new String[]{"Login successful", "0"};
         } else {
-            return "Login failed";
+            return new String[]{"Login failed", "1"};
         }
     }
 
     @PostMapping("/register")
-    public String register(@RequestBody User user) {
+    public String[] register(@RequestBody User user) {
         boolean success = userService.registerUser(user);
         if (success) {
-            return "User registered successfully";
+            return new String[]{"User registered successfully", "0"};
         } else {
-            return "Username or email already exists";
+            return new String[]{"Username or email already exists", "1"};
         }
     }
 }
