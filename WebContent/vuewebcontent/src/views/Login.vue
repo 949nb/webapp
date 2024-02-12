@@ -38,7 +38,7 @@
         methods: {
             loginHandler() {
                 if (this.usernameAndPasswordIsBland) {
-                    fetch('http://localhost:8080/login', {
+                    fetch('http://localhost:8080/api/login', {
                         method: 'POST',
                         body: JSON.stringify({
                             username: this.username,

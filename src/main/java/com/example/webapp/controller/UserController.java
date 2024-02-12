@@ -2,10 +2,7 @@ package com.example.webapp.controller;
 import com.example.webapp.model.User;
 import com.example.webapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin
 @RestController
@@ -13,7 +10,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @PostMapping("/login")
+    @PostMapping("/api/login")
     public String[] login(@RequestBody User loginUser) {
         boolean isValid = userService.checkLogin(loginUser.getUsername(), loginUser.getPassword());
         if (isValid) {
@@ -23,7 +20,7 @@ public class UserController {
         }
     }
 
-    @PostMapping("/register")
+    @PostMapping("/api/register")
     public String[] register(@RequestBody User user) {
         boolean success = userService.registerUser(user);
         if (success) {
@@ -32,4 +29,7 @@ public class UserController {
             return new String[]{"Username or email already exists", "1"};
         }
     }
+
+
+
 }

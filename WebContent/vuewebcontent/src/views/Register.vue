@@ -47,7 +47,7 @@
             RegisterHandler() {
                 console.log(123)
                 if (this.usernameAndPasswordAndEmailIsBland) {
-                    fetch('http://localhost:8080/register', {
+                    fetch('http://localhost:8080/api/register', {
                         method: 'POST',
                         body: JSON.stringify({
                             username: this.username,
